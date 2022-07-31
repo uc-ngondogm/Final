@@ -150,5 +150,22 @@ namespace Final.Data
             }
             
         }
+        
+        public int? Add(ClassName class)
+        {
+            var classes = _context.Classes.Where(x => x.ClassName.Equals(class.ClassName) && x.Grade.Equals(class.Grade) && x.YearStarted.Equals(class.YearStarted)).FirstOrDefault();
+            if (classes != null)
+                return null;
+            try
+            {
+                _context.Classes.Add(class)
+                _context.SaveChanges();
+                return 1;            
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

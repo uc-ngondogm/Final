@@ -34,7 +34,7 @@ namespace Final.Controllers
             if (id == null || id == 0)
             {
                 List<TeamClass> classes = _context.GetAllClasses();
-                return Ok(classes.Take(5))
+                return Ok(classes.Take(5));
             }
             else
             {
