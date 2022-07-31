@@ -7,6 +7,38 @@ namespace Final.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Classes",
+                columns: table => new
+                {
+                    TeamClassId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TeamNameId = table.Column<int>(nullable: false),
+                    ClassName = table.Column<string>(nullable: true),
+                    Grade = table.Column<int>(nullable: false),
+                    YearStarted = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Classes", x => x.TeamClassId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    TeamGameId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TeamNameId = table.Column<int>(nullable: false),
+                    GameName = table.Column<string>(nullable: true),
+                    YearStarted = table.Column<string>(nullable: true),
+                    Frequency = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => x.TeamGameId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hobbies",
                 columns: table => new
                 {
@@ -40,6 +72,26 @@ namespace Final.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Classes",
+                columns: new[] { "TeamClassId", "ClassName", "Grade", "TeamNameId", "YearStarted" },
+                values: new object[,]
+                {
+                    { 1, "Contemperary Programming", 100, 1, "5/8/2022" },
+                    { 2, "Contemperary Programming", 100, 2, "5/8/2022" },
+                    { 3, "Contemperary Programming", 100, 3, "5/8/2022" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Games",
+                columns: new[] { "TeamGameId", "Frequency", "GameName", "TeamNameId", "YearStarted" },
+                values: new object[,]
+                {
+                    { 1, "4/month", "Call of Duty Black Ops 2", 1, "5/8/2022" },
+                    { 2, "12/month", "Minecraft", 2, "5/8/2022" },
+                    { 3, "8/month", "Far Cry 3", 3, "5/8/2022" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Hobbies",
                 columns: new[] { "TeamHobbyId", "Frequency", "HobbyName", "Location", "TeamNameId", "YearStarted" },
                 values: new object[,]
@@ -62,6 +114,12 @@ namespace Final.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Classes");
+
+            migrationBuilder.DropTable(
+                name: "Games");
+
             migrationBuilder.DropTable(
                 name: "Hobbies");
 

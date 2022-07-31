@@ -27,17 +27,30 @@ namespace Final
                 new TeamGame {TeamGameId = 1,TeamNameId=1, GameName = "Call of Duty Black Ops 2", YearStarted = "5/8/2022", Frequency = "4/month"},
                 new TeamGame {TeamGameId = 2,TeamNameId=2, GameName = "Minecraft", YearStarted = "5/8/2022", Frequency = "12/month"},
                 new TeamGame {TeamGameId = 3,TeamNameId=3, GameName = "Far Cry 3", YearStarted = "5/8/2022", Frequency = "8/month"});
-
         }
 
         internal object GetNames(int id)
         {
             throw new NotImplementedException();
         }
+        public DbSet<TeamName> Names {get; set;} 
 
-        public DbSet<TeamName> Names {get; set;}  
+        internal object GetHobbies(int id)
+        {
+            throw new NotImplementedException();
+        }
         public DbSet<TeamHobby> Hobbies {get; set;} 
+
+        internal object GetClasses(int id)
+        {
+            throw new NotImplementedException();
+        }
         public DbSet<TeamClass> Classes {get; set;}
+
+        internal object GetGames(int id)
+        {
+            throw new NotImplementedException();
+        }
         public DbSet<TeamGame> Games {get; set;}
     }
 }

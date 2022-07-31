@@ -18,6 +18,106 @@ namespace Final.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Final.TeamClass", b =>
+                {
+                    b.Property<int>("TeamClassId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ClassName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeamNameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("YearStarted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamClassId");
+
+                    b.ToTable("Classes");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamClassId = 1,
+                            ClassName = "Contemperary Programming",
+                            Grade = 100,
+                            TeamNameId = 1,
+                            YearStarted = "5/8/2022"
+                        },
+                        new
+                        {
+                            TeamClassId = 2,
+                            ClassName = "Contemperary Programming",
+                            Grade = 100,
+                            TeamNameId = 2,
+                            YearStarted = "5/8/2022"
+                        },
+                        new
+                        {
+                            TeamClassId = 3,
+                            ClassName = "Contemperary Programming",
+                            Grade = 100,
+                            TeamNameId = 3,
+                            YearStarted = "5/8/2022"
+                        });
+                });
+
+            modelBuilder.Entity("Final.TeamGame", b =>
+                {
+                    b.Property<int>("TeamGameId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Frequency")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GameName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TeamNameId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("YearStarted")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TeamGameId");
+
+                    b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            TeamGameId = 1,
+                            Frequency = "4/month",
+                            GameName = "Call of Duty Black Ops 2",
+                            TeamNameId = 1,
+                            YearStarted = "5/8/2022"
+                        },
+                        new
+                        {
+                            TeamGameId = 2,
+                            Frequency = "12/month",
+                            GameName = "Minecraft",
+                            TeamNameId = 2,
+                            YearStarted = "5/8/2022"
+                        },
+                        new
+                        {
+                            TeamGameId = 3,
+                            Frequency = "8/month",
+                            GameName = "Far Cry 3",
+                            TeamNameId = 3,
+                            YearStarted = "5/8/2022"
+                        });
+                });
+
             modelBuilder.Entity("Final.TeamHobby", b =>
                 {
                     b.Property<int>("TeamHobbyId")

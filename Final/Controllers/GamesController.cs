@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Final.Data;
 using Final.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,46 +11,38 @@ namespace Final.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class FavoriteClassController : ControllerBase
-    {
-        private readonly ILogger<FavoriteClassController> _logger;
+    public class GamesController : ControllerBase
+    {       
+        private readonly ILogger<GamesController> _logger;
         //private readonly ProjectContext _context;
         private readonly IProjectContext2 _context;
-
-        //public hobbiesController(ILogger<hobbiesController> logger, ProjectContext context)
-        public FavoriteClassController(ILogger<FavoriteClassController> logger, IProjectContext2 context)
+        
+        public GamesController(ILogger<GamesController> logger, IProjectContext2 context)
         {
             _logger = logger;
             _context = context;
         }
+
         [HttpGet]
         public IActionResult Get() //IEnumerable<WeatherForecast> Get()
-        {
+        {            
             //return Ok(_context.Names.ToList()); 
-            return Ok(_context.GetAllClasses());
+            return Ok(_context.GetAllGames());            
         }
         [HttpGet("id")]
-        public IActionResult Get(int? id)
+        public IActionResult Get(int id)
         {
-            if (id == null || id == 0)
-            {
-                List<TeamClass> classes = _context.GetAllClasses();
-                return Ok(classes.Take(5));
-            }
-            else
-            {
-                var className = _context.GetNameById(id);
-                if (className == null)
-                    return NotFound(id);
+            var game = _context.GetGameById(id);
+            if (game == null)
+                return NotFound(id);
 
-                return Ok(className);
-            }
+            return Ok(game);
         }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
             //var name = _context.RemoveNameById(id);
-            var result = _context.RemoveNameById(id);
+            var result = _context.RemoveGameById(id);
 
             //if (name == null)
             if (result == null)
@@ -57,33 +50,33 @@ namespace Final.Controllers
             //if (string.IsNullOrEmpty(name.FullName))
             if (result == 0)
                 return StatusCode(500, "Error processing request");
-
-            return Ok();
+            
+            return Ok();          
         }
         [HttpPut]
-        public IActionResult Put(TeamName name)
+        public IActionResult Put(TeamGame game)
         {
-            var result = _context.updateName(name);
-            if (result == null)
-                return NotFound(name.TeamNameId);
+           var result = _context.updateGame(game);
+           if (result == null)
+               return NotFound(game.TeamGameId);
 
             if (result == 0)
                 return StatusCode(500, "Error processing request");
-
-            return Ok();
+            
+            return Ok();           
         }
         [HttpPost]
-        public IActionResult Post(TeamName name)
+        public IActionResult Post(TeamGame game)
         {
-            var result = _context.Add(name);
+            var result = _context.Add(game);
             if (result == null)
-                return StatusCode(500, "Name already exists");
+               return StatusCode(500, "Game already exists");
 
             if (result == 0)
                 return StatusCode(500, "Error processing request");
-
-            return Ok();
+            
+            return Ok();            
         }
-
+      
     }
 }

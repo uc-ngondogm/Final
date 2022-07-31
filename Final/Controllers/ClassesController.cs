@@ -1,7 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Final.Data;
 using Final.interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -10,14 +11,14 @@ namespace Final.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class hobbiesController : ControllerBase
+    public class ClassesController : ControllerBase
     {       
-        private readonly ILogger<hobbiesController> _logger;
+        private readonly ILogger<ClassesController> _logger;
         //private readonly ProjectContext _context;
         private readonly IProjectContext2 _context;
 
-        //public hobbiesController(ILogger<hobbiesController> logger, ProjectContext context)
-        public hobbiesController(ILogger<hobbiesController> logger, IProjectContext2 context)        
+        //public ClassesController(ILogger<ClassesController> logger, ProjectContext context)
+        public ClassesController(ILogger<ClassesController> logger, IProjectContext2 context)
         {
             _logger = logger;
             _context = context;
@@ -26,23 +27,23 @@ namespace Final.Controllers
         [HttpGet]
         public IActionResult Get() //IEnumerable<WeatherForecast> Get()
         {            
-            //return Ok(_context.Hobbies.ToList()); 
-            return Ok(_context.GetAllHobbies());           
+            //return Ok(_context.Names.ToList()); 
+            return Ok(_context.GetAllClasses());            
         }
         [HttpGet("id")]
         public IActionResult Get(int id)
         {
-            var hobby = _context.GetHobbyById(id);
-            if (hobby == null)
+            var class1 = _context.GetClassById(id);
+            if (class1 == null)
                 return NotFound(id);
 
-            return Ok(hobby);
+            return Ok(class1);
         }
         [HttpDelete]
         public IActionResult Delete(int id)
         {
             //var name = _context.RemoveNameById(id);
-            var result = _context.RemoveHobbyById(id);
+            var result = _context.RemoveClassById(id);
 
             //if (name == null)
             if (result == null)
@@ -54,11 +55,11 @@ namespace Final.Controllers
             return Ok();          
         }
         [HttpPut]
-        public IActionResult Put(TeamHobby hobby)
+        public IActionResult Put(TeamClass class1)
         {
-           var result = _context.updateHobby(hobby);
+           var result = _context.updateClass(class1);
            if (result == null)
-               return NotFound(hobby.TeamHobbyId);
+               return NotFound(class1.TeamClassId);
 
             if (result == 0)
                 return StatusCode(500, "Error processing request");
@@ -66,11 +67,11 @@ namespace Final.Controllers
             return Ok();           
         }
         [HttpPost]
-        public IActionResult Post(TeamHobby hobby)
+        public IActionResult Post(TeamClass class1)
         {
-            var result = _context.Add(hobby);
+            var result = _context.Add(class1);
             if (result == null)
-               return StatusCode(500, "Hobby already exists");
+               return StatusCode(500, "Class already exists");
 
             if (result == 0)
                 return StatusCode(500, "Error processing request");
