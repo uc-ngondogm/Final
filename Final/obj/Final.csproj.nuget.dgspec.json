@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\_.Final\\Final\\Final.csproj": {}
+    "C:\\Configs\\_.Final\\Final\\Final.csproj": {}
   },
   "projects": {
-    "C:\\_.Final\\Final\\Final.csproj": {
+    "C:\\Configs\\_.Final\\Final\\Final.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\_.Final\\Final\\Final.csproj",
+        "projectUniqueName": "C:\\Configs\\_.Final\\Final\\Final.csproj",
         "projectName": "Final",
-        "projectPath": "C:\\_.Final\\Final\\Final.csproj",
+        "projectPath": "C:\\Configs\\_.Final\\Final\\Final.csproj",
         "packagesPath": "C:\\Users\\gudav\\.nuget\\packages\\",
-        "outputPath": "C:\\_.Final\\Final\\obj\\",
+        "outputPath": "C:\\Configs\\_.Final\\Final\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\gudav\\AppData\\Roaming\\NuGet\\NuGet.Config",
