@@ -19,9 +19,9 @@ namespace Final
                 new TeamHobby {TeamHobbyId = 3,TeamNameId=3, HobbyName = "Hiking", YearStarted ="10/30/2009" ,Frequency = "8/Month",Location = "Park" });
 
             builder.Entity<TeamClass>().HasData(
-                new TeamClass {TeamClassId = 1,TeamNameId=1, ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"},
-                new TeamClass {TeamClassId = 2,TeamNameId=2, ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"},
-                new TeamClass {TeamClassId = 3,TeamNameId=3, ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"});
+                new TeamClass {TeamClassId = 1,TeamName= "Guy-David Ngondo", ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"},
+                new TeamClass {TeamClassId = 2,TeamName= "Mitchell Hansbauer", ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"},
+                new TeamClass {TeamClassId = 3,TeamName= "Robert Champion", ClassName = "Contemperary Programming", Grade = 100 ,YearStarted = "5/8/2022"});
 
             builder.Entity<TeamGame>().HasData(
                 new TeamGame {TeamGameId = 1,TeamNameId=1, GameName = "Call of Duty Black Ops 2", YearStarted = "5/8/2022", Frequency = "4/month"},

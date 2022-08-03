@@ -12,7 +12,7 @@ namespace Final.Migrations
                 {
                     TeamClassId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TeamNameId = table.Column<int>(nullable: false),
+                    TeamName = table.Column<string>(nullable: true),
                     ClassName = table.Column<string>(nullable: true),
                     Grade = table.Column<int>(nullable: false),
                     YearStarted = table.Column<string>(nullable: true)
@@ -73,12 +73,12 @@ namespace Final.Migrations
 
             migrationBuilder.InsertData(
                 table: "Classes",
-                columns: new[] { "TeamClassId", "ClassName", "Grade", "TeamNameId", "YearStarted" },
+                columns: new[] { "TeamClassId", "ClassName", "Grade", "TeamName", "YearStarted" },
                 values: new object[,]
                 {
-                    { 1, "Contemperary Programming", 100, 1, "5/8/2022" },
-                    { 2, "Contemperary Programming", 100, 2, "5/8/2022" },
-                    { 3, "Contemperary Programming", 100, 3, "5/8/2022" }
+                    { 1, "Contemperary Programming", 100, "Guy-David Ngondo", "5/8/2022" },
+                    { 2, "Contemperary Programming", 100, "Mitchell Hansbauer", "5/8/2022" },
+                    { 3, "Contemperary Programming", 100, "Robert Champion", "5/8/2022" }
                 });
 
             migrationBuilder.InsertData(

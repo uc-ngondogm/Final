@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Final.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20220803231747_1st")]
+    [Migration("20220803233554_1st")]
     partial class _1st
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace Final.Migrations
                     b.Property<int>("Grade")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeamNameId")
-                        .HasColumnType("int");
+                    b.Property<string>("TeamName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("YearStarted")
                         .HasColumnType("nvarchar(max)");
@@ -49,7 +49,7 @@ namespace Final.Migrations
                             TeamClassId = 1,
                             ClassName = "Contemperary Programming",
                             Grade = 100,
-                            TeamNameId = 1,
+                            TeamName = "Guy-David Ngondo",
                             YearStarted = "5/8/2022"
                         },
                         new
@@ -57,7 +57,7 @@ namespace Final.Migrations
                             TeamClassId = 2,
                             ClassName = "Contemperary Programming",
                             Grade = 100,
-                            TeamNameId = 2,
+                            TeamName = "Mitchell Hansbauer",
                             YearStarted = "5/8/2022"
                         },
                         new
@@ -65,7 +65,7 @@ namespace Final.Migrations
                             TeamClassId = 3,
                             ClassName = "Contemperary Programming",
                             Grade = 100,
-                            TeamNameId = 3,
+                            TeamName = "Robert Champion",
                             YearStarted = "5/8/2022"
                         });
                 });
